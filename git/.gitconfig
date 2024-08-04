@@ -1,0 +1,23 @@
+[user]
+	email = email
+	name = username
+
+[core]
+	editor = nvim
+
+[alias]
+	b = branch
+	s = status
+	ll = log --stat --abbrev-commit
+	llg = log --color --graph --pretty=format:'%C(bold white)%H %dCreset%n%s%n%+b%C(bold blue)%an<%ae>%Crest %C(bold green)%cr (%ci)' --abbrev-commit
+
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+
+[init]
+	defaultBranch = main
