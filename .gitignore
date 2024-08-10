@@ -3,6 +3,9 @@
 nvim/lua/.luarc.json
 nvim/plugin/**
 
+# tmux
+tmux/plugins/**
+
 # notes + workflow 
 obsidian/**
 scripts/**
