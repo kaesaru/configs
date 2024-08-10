@@ -1,0 +1,8 @@
+
+# nvim
+nvim/lua/.luarc.json
+nvim/plugin/**
+
+# notes + workflow 
+obsidian/**
+scripts/**

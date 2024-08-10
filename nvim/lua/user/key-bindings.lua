@@ -42,6 +42,11 @@ keyMap('v', '<leader>s', ':w<CR>', { desc = " Save" })
 -- vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 
+-- nvim-ufo (folds)
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+
+
 -- Buffers
 keyMap('n', '<leader>h', '<cmd>bp<CR>', { desc = "buff " })
 keyMap('n', '<leader>l', '<cmd>bn<CR>', { desc = "buff " })
@@ -75,6 +80,10 @@ keyMap('n', '<leader>t', '<cmd>NvimTreeToggle<CR>', { desc = "Tree" })
 -- Windows
 keyMap('n', '<C-h>', '<C-W>h', { desc = "window " })
 keyMap('n', '<C-l>', '<C-W>l', { desc = "window " })
+keyMap('n', '<C-k>', '<C-W>k', { desc = "window " })
+keyMap('n', '<C-j>', '<C-W>j', { desc = "window " })
+keyMap('n', '<leader>v', '<C-W>v', { desc = "window |" })
+keyMap('n', '<leader>-', '<C-W>s', { desc = "window -" })
 
 -- Null LS
 -- example of how this can be used

@@ -1,6 +1,7 @@
 vim.opt.autoindent = true
 vim.opt.et = true
 
+
 local set = vim.opt
 -- :help option-list  (to see list of all options)
 -- https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
@@ -9,6 +10,14 @@ set.ts = 2
 set.sw = 2
 set.sts = 2
 set.cursorline = false
+
+-- folds in files
+-- set.foldmethod = "expr"
+-- set.foldexpr = "nvim_treesitter#foldexpr()"
+set.foldcolumn = "1"
+set.foldlevel = 99
+set.foldlevelstart = 99
+set.foldenable = true
 
 
 -- let g:airline#extensions#tabline#enabled = 1

@@ -82,6 +82,7 @@ require('packer').startup(function(use)
     },
     -- tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
+  use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 
   -- Which key to help with keybindings
   use 'folke/which-key.nvim'
@@ -92,6 +93,7 @@ require('packer').startup(function(use)
   use 'rafi/awesome-vim-colorschemes'
   -- use 'tomasiser/vim-code-dark'
   use 'norcalli/nvim-colorizer.lua'
+  use 'HiPhish/rainbow-delimiters.nvim'
 
   -- auto closing + pairing
   use 'windwp/nvim-autopairs'
@@ -378,7 +380,9 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  -- NOTE: removed since this is not being used and messing with window mapping. if this is needed
+  -- add back in but find a new kepmapping
+  -- nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -402,7 +406,9 @@ end
 local servers = {
   pyright = {},
   tsserver = {},
+  tailwindcss = {},
   emmet_language_server = {},
+  eslint = {},
   -- jdtls = {}
   -- cssls = {}
   -- eslint = {}
@@ -500,17 +506,6 @@ cmp.setup {
 }
 
 require("nvim-autopairs").setup {}
--- FIX: figure out why this does not work or find another plugin
--- require("nvim-ts-autotag").setup({
---   -- opts = {
---   --   -- Defaults
---   --   enable_close = true, -- Auto close tags
---   --   enable_rename = true, -- Auto rename pairs of tags
---   --   enable_close_on_slash = false -- Auto close on trailing </
---   -- },
--- })
-
-
 require("colorizer").setup()
 require('user.settings')
 require('user.key-bindings')
@@ -519,7 +514,13 @@ require('user.nvim-tree')
 require('user.which-key')
 require('user.colors')
 require('user.todo-comments')
+require('ufo').setup({
+    provider_selector = function(bufnr, filetype, buftype)
+        return {'treesitter', 'indent'}
+    end
+})
 
+-- NOTE: used for troubleshooting
 -- local status, autotag = pcall(require, "nvim-ts-autotag")
 -- if status then
 --   print("nvim-ts-autotag is loaded")
